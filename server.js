@@ -2,6 +2,8 @@ const express = require('express');
 const connectToDatabase = require('./config/db');
 const cors = require('cors'); // Import cors middleware
 const authRouter = require('./routes/authRouter');
+const productRouter = require ('./routes/productRouter')
+const orderRouter = require('./routes/orderRouter');
 
 const app = express();
 const PORT = 4000;
@@ -19,6 +21,9 @@ app.use(cors({
 
 // Sử dụng router cho auth
 app.use('/api/auth', authRouter);
+app.use('/api/product', productRouter)
+app.use('/api/orders', orderRouter);
+
 
 // Định tuyến cơ bản
 app.get('/', (req, res) => {
